@@ -14,6 +14,14 @@ class Playlist extends Model
         'title',
     ];
 
+<<<<<<< HEAD
+=======
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
+>>>>>>> ami/main
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

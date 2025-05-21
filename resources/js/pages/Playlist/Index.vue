@@ -18,6 +18,15 @@
         <ul>
           <li v-for="playlist in playlists" :key="playlist.uuid">
             {{ playlist.title }} [{{ playlist.tracks_count }} musiques]
+<<<<<<< HEAD
+=======
+            |
+            <Link :href="route('playlists.edit', { playlist: playlist })">Modifier</Link>
+            |
+            <Link :href="route('playlists.show', { playlist: playlist })">Voir</Link>
+            |
+            <Link :href="route('playlists.destroy', { playlist: playlist })" method="delete" as="button">Supprimer</Link>
+>>>>>>> ami/main
           </li>
         </ul>
       </div>

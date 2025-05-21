@@ -14,6 +14,7 @@
     </template>
 
     <template #content>
+<<<<<<< HEAD
       <form @submit.prevent="send">
         <!-- Title -->
         <div class="mb-3">
@@ -33,6 +34,9 @@
         <input type="submit" value="Créer la musique"
           class="text-white font-bold rounded py-2 px-4 bg-blue-500 hover:bg-blue-700">
       </form>
+=======
+      <PlaylistForm :tracks="tracks" />
+>>>>>>> ami/main
     </template>
   </MusicLayout>
 </template>
@@ -40,6 +44,10 @@
 <script lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 import MusicLayout from '@/layouts/MusicLayout.vue';
+<<<<<<< HEAD
+=======
+import PlaylistForm from '@/components/PlaylistForm.vue';
+>>>>>>> ami/main
 
 export default {
   name: 'Index',
@@ -47,6 +55,7 @@ export default {
     Head,
     MusicLayout,
     Link,
+<<<<<<< HEAD
   },
   props: {
     tracks: Array,
@@ -63,6 +72,12 @@ export default {
     send() {
       this.form.post(route('playlists.store'));
     }
+=======
+    PlaylistForm,
+  },
+  props: {
+    tracks: Array,
+>>>>>>> ami/main
   }
 }
 </script>

@@ -17,11 +17,15 @@ class PlaylistController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $playlists = Playlist::with('tracks')->get();
 
         foreach ($playlists as $playlist) {
             $playlist->numberOfTracks = $playlist->tracks->count();
         }
+=======
+        $playlists = Playlist::withCount('tracks')->get();
+>>>>>>> ami/main
 
         return Inertia::render('Playlist/Index', [
             'playlists' => $playlists,
@@ -59,7 +63,11 @@ class PlaylistController extends Controller
 
         $playlist->tracks()->attach($tracks->pluck('id'));
 
+<<<<<<< HEAD
         return redirect()->route('playlists.index');
+=======
+        return redirect()->route('playlists.show', ['playlist' => $playlist]);
+>>>>>>> ami/main
     }
 
     /**
@@ -68,7 +76,11 @@ class PlaylistController extends Controller
     public function show(Playlist $playlist)
     {
         return Inertia::render('Playlist/Show', [
+<<<<<<< HEAD
             'playlist' => $playlist,
+=======
+            'playlist' => $playlist->load('tracks'),
+>>>>>>> ami/main
         ]);
     }
 
@@ -77,8 +89,16 @@ class PlaylistController extends Controller
      */
     public function edit(Playlist $playlist)
     {
+<<<<<<< HEAD
         return Inertia::render('Playlist/Edit', [
             'playlist' => $playlist,
+=======
+        $tracks = Track::where('display', true)->get();
+
+        return Inertia::render('Playlist/Edit', [
+            'playlist' => $playlist->load('tracks'),
+            'tracks' => $tracks,
+>>>>>>> ami/main
         ]);
     }
 
@@ -87,7 +107,22 @@ class PlaylistController extends Controller
      */
     public function update(PlaylistRequest $request, Playlist $playlist)
     {
+<<<<<<< HEAD
         //
+=======
+        $tracks = Track::whereIn('uuid', $request->tracks)->where('display', true)->get();
+
+        if ($tracks->count() !== count($request->tracks)) {
+            throw ValidationException::withMessages(['tracks' => 'Tracks not found']);
+        }
+
+        $playlist->title = $request->title;
+        $playlist->save();
+
+        $playlist->tracks()->sync($tracks->pluck('id'));
+
+        return redirect()->route('playlists.show', ['playlist' => $playlist]);
+>>>>>>> ami/main
     }
 
     /**

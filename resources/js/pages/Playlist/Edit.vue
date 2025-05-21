@@ -1,5 +1,6 @@
 <template>
 
+<<<<<<< HEAD
   <Head title="Tracks" />
 
   <MusicLayout>
@@ -10,10 +11,23 @@
     <template #action>
       <Link :href="route('tracks.index')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded w-full mb-">
       Liste des musiques
+=======
+  <Head title="Playlists" />
+
+  <MusicLayout>
+    <template #title>
+      Modifier une playlist
+    </template>
+
+    <template #action>
+      <Link :href="route('playlists.index')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded w-full mb-">
+      Liste des playlists
+>>>>>>> ami/main
       </Link>
     </template>
 
     <template #content>
+<<<<<<< HEAD
       <form @submit.prevent="send">
         <!-- Title -->
         <div class="mb-3">
@@ -44,13 +58,23 @@
         <input type="submit" value="Modifier la musique"
           class="text-white font-bold rounded py-2 px-4 bg-blue-500 hover:bg-blue-700">
       </form>
+=======
+      <PlaylistForm :playlist="playlist" :tracks="tracks" />
+>>>>>>> ami/main
     </template>
   </MusicLayout>
 </template>
 
+<<<<<<< HEAD
 <script>
 import { Head, Link } from '@inertiajs/vue3';
 import MusicLayout from '@/layouts/MusicLayout.vue';
+=======
+<script lang="ts">
+import { Head, Link } from '@inertiajs/vue3';
+import MusicLayout from '@/layouts/MusicLayout.vue';
+import PlaylistForm from '@/components/PlaylistForm.vue';
+>>>>>>> ami/main
 
 export default {
   name: 'Index',
@@ -58,6 +82,7 @@ export default {
     Head,
     MusicLayout,
     Link,
+<<<<<<< HEAD
   },
   props: {
     track: Object,
@@ -75,6 +100,13 @@ export default {
     send() {
       this.form.put(route('tracks.update', { track: this.track }));
     }
+=======
+    PlaylistForm,
+  },
+  props: {
+    playlist: Object,
+    tracks: Array,
+>>>>>>> ami/main
   }
 }
 </script>

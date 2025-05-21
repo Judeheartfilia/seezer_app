@@ -4,16 +4,26 @@
 
   <MusicLayout>
     <template #title>
+<<<<<<< HEAD
       Tracks
     </template>
 
     <template #action>
       <Link :href="route('tracks.index')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded w-full mb-">
       Liste des musiques
+=======
+      Playlist - {{ playlist.title }}
+    </template>
+
+    <template #action>
+      <Link :href="route('playlists.index')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded w-full mb-">
+      Liste des playlists
+>>>>>>> ami/main
       </Link>
     </template>
 
     <template #content>
+<<<<<<< HEAD
       <form @submit.prevent="send">
         <!-- Title -->
         <div class="mb-3">
@@ -58,13 +68,23 @@
         <input type="submit" value="Créer la musique"
           class="text-white font-bold rounded py-2 px-4 bg-blue-500 hover:bg-blue-700">
       </form>
+=======
+      <TrackList :tracks="playlist.tracks" />
+>>>>>>> ami/main
     </template>
   </MusicLayout>
 </template>
 
+<<<<<<< HEAD
 <script lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 import MusicLayout from '@/layouts/MusicLayout.vue';
+=======
+<script>
+import { Head, Link } from '@inertiajs/vue3';
+import MusicLayout from '@/layouts/MusicLayout.vue';
+import TrackList from '@/components/TrackList.vue';
+>>>>>>> ami/main
 
 export default {
   name: 'Index',
@@ -72,6 +92,7 @@ export default {
     Head,
     MusicLayout,
     Link,
+<<<<<<< HEAD
   },
   data() {
     return {
@@ -89,6 +110,12 @@ export default {
       // this.$inertia.post(route('tracks.store'), this.form);
       this.form.post(route('tracks.store'));
     }
+=======
+    TrackList,
+  },
+  props: {
+    playlist: Object,
+>>>>>>> ami/main
   }
 }
 </script>
